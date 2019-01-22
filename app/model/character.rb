@@ -15,8 +15,10 @@ class Character < ActiveRecord::Base
         Character.all
     end
 
-    # def update_character(name)
-    #     self.update(name: name)
-    # end
+     def self.update_character_name(chara_id , new_name)
+        char=Character.find(chara_id)
+        char.update(name: new_name)
+        puts char.inspect
+     end
 
 end

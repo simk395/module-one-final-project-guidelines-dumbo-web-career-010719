@@ -6,32 +6,63 @@ require_relative '../app/model/item'
 
 def start
     input=nil
+    puts "welcome to Loot Inventory"
     while input!="exit"
         greeting
         input=gets.chomp
         if input == "1"
+            up
             newCharacter=new_character
+            down
         elsif input =="2"
+            up
             item=generate_new_item
+            down
         elsif input =="3"
             
         elsif input =="4"
+            up
             delete_character
+            down
         elsif input =="5"
+            up
             display_characters
+            down
         elsif input =="6"
+            up
             display_items
+            down
         elsif input =="7"
+            up
             delete_item
-        elsif input =="exit"
+            down
+        elsif input =="8"
+            up
+            update_character
+            down
+        elsif input =="exit" || input == "9"
             break
         end
     end
+end
 
+def up
+    puts "================================================================================================="
+end
+
+def down
+    puts "================================================================================================="
+end
+
+def update_character
+    puts "Enter the character id you want to change the name:"
+    char_id=gets.chomp
+    puts "Enter a new name for the character: "
+    new_name=gets.chomp
+    Character.update_character_name(char_id.to_i, new_name)
 end
 
 def greeting
-    puts "welcome to Loot Game"
     menu
     puts "What do you want to do?"
 end
@@ -59,17 +90,18 @@ end
 def new_character
     puts "what is name of the character?"
     char_name=gets.chomp
-    Character.create_character(char_name)
+    char=Character.create_character(char_name)
+    puts char.inspect
 end
 
 def display_items
-    all_item=Item.all
+    all_item=Item.show_items
     all_item.map do |item|
         puts item.inspect
     end
 end
 def display_characters
-    all_character=Character.all
+    all_character=Character.show_characters
     all_character.map do |char|
         puts char.inspect
     end
@@ -98,8 +130,9 @@ def generate_new_item
     if rand_num.to_i % 2 == 1
         item=item_array.sample
         item.save
+        puts item.inspect
     else
-        puts "no item is created."
+        puts "no item is created. Try again!"
         nil
     end
 end
