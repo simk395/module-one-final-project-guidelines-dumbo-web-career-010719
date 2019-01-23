@@ -10,6 +10,7 @@ def start
     while input!="exit"
         greeting
         input=gets.chomp
+        input=input.downcase
         if input == "1"
             up
             newCharacter=new_character
@@ -19,28 +20,40 @@ def start
             item=generate_new_item
             down
         elsif input =="3"
-            
+            up
+            add_inventory
+            down
         elsif input =="4"
             up
-            delete_character
+            find_item
             down
+        # elsif input =="5"
+           
+        #     delete_character
+        
+        # elsif input =="6"
+        
+        #     delete_item
+        
         elsif input =="5"
-            up
-            display_characters
-            down
+            #delete inventory
         elsif input =="6"
+            up
+            display_inventories
+            down
+        elsif input == "7"
             up
             display_items
             down
-        elsif input =="7"
+        elsif input == "8"
             up
-            delete_item
+            display_characters
             down
-        elsif input =="8"
+        elsif input =="9"
             up
             update_character
             down
-        elsif input =="exit" || input == "9"
+        elsif input == "10"|| input ="exit"
             break
         end
     end
@@ -59,12 +72,17 @@ def update_character
     char_id=gets.chomp
     puts "Enter a new name for the character: "
     new_name=gets.chomp
-    Character.update_character_name(char_id.to_i, new_name)
+    new_inv=Character.update_character_name(char_id.to_i, new_name)
+    puts new_inv
 end
 
 def greeting
     menu
     puts "What do you want to do?"
+end
+
+def display_inventories
+    puts tp Inventory.show_inventories
 end
 
 def delete_character
@@ -96,30 +114,49 @@ end
 
 def display_items
     all_item=Item.show_items
-    all_item.map do |item|
-        puts item.inspect
-    end
+    puts tp all_item
+    # all_item.map do |item|
+    #     puts item.inspect
+    # end
 end
 def display_characters
     all_character=Character.show_characters
-    all_character.map do |char|
-        puts char.inspect
-    end
+    puts tp all_character
+    # all_character.map do |char|
+    #     puts char.inspect
+    # end
 end
 
 
 def menu
-    puts "1. create character"
-    puts "2. create item"
-    puts "3. find item" 
-    puts "4. delete character"
-    puts "5. show all the characters"
-    puts "6. show all the items"
-    puts "7. delete item"
-    puts "8. change character name"
-    puts "9. exit"
+    puts "1. create character".upcase
+    puts "2. create item".upcase
+    puts "3. add inventory".upcase
+    puts "4. find item".upcase
+    # puts "5. delete character".upcase
+    # puts "6. delete item".upcase
+    puts "5. delete inventory".upcase
+    puts "6. show all the inventories".upcase
+    puts "7. show all the items".upcase
+    puts "8. show all the characters".upcase
+    puts "9. change character name".upcase
+    puts "10. exit"
 end
 
+def find_item(item_id)
+    Inventory.find_item(item_id)
+end
+
+def add_inventory
+    puts "enter a character id: "
+    char_id=gets.chomp
+    char=Character.find(char_id.to_i)
+    puts "enter a item id"
+    item_id=gets.chomp
+    item=Item.find(item_id.to_i)
+    Inventory.add_inventory(char, item)
+
+end
 
 def generate_new_item
     item_array=[Item.new(name: "sword", category: "Weapon"), 

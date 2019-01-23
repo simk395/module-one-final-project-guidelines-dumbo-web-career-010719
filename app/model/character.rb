@@ -3,7 +3,7 @@ class Character < ActiveRecord::Base
     has_many :items, through: :inventory
 
     def self.create_character(char)
-        Character.create(name: char, hp: 50, atk: 10, def: 10)
+        Character.create(name: char)
     end
 
     def delete_character
@@ -19,6 +19,10 @@ class Character < ActiveRecord::Base
         char=Character.find(chara_id)
         char.update(name: new_name)
         puts char.inspect
+     end
+
+     def self.add_item
+        
      end
 
 end
