@@ -11,14 +11,14 @@ class Inventory < ActiveRecord::Base
     end
 
     def self.find_item(item_id)
-        Inventory.all.collect do |inv|
+        Inventory.all.select do |inv|
             inv.item_id = item_id
         end
     end
 
     def self.add_inventory(char, item)
         inv=Inventory.create()
-        inv.character=char
+        # inv.character=char
         char.inventories<<inv
         item.inventories<<inv
     end
