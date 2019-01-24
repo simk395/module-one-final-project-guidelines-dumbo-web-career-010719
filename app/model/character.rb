@@ -11,6 +11,7 @@ class Character < ActiveRecord::Base
             Inventory.create(char_id: new_char.id)
         end
         puts "You have created #{new_char.name}!"
+        menu2
     end
     
     def self.show_characters
@@ -35,6 +36,7 @@ class Character < ActiveRecord::Base
             q = ask("Choose character: (Please enter character id number)", Integer)
             @@current_char = Character.find_by(id: q)
             puts "You've selected #{@@current_char.name}!"
+            menu2
         else
             puts "There are no characters to select."
         end
@@ -52,4 +54,19 @@ class Character < ActiveRecord::Base
             puts "No character has been selected."
         end
      end
+
+     def self.menu2
+        puts
+        loop do
+          choose do |menu|
+            menu.choice("Change character name"){Character.update_character_name()}
+            menu.choice("Show all characters") {Character.show_characters()}
+            menu.choice("Create Item") { Item.generate_new_item()}#
+            menu.choice("Show character inventory") {Inventory.char_inventory()}#can do better
+            menu.choice("Delete Character"){Character.delete_char()}
+            menu.choice("Delete Item"){Item.delete_item()}
+            menu.choice(:Quit, "Exit program.") { back }
+          end
+        end
+    end
 end

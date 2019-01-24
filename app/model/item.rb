@@ -35,7 +35,7 @@ class Item < ActiveRecord::Base
 
     def self.delete_item
         if Character.current_char != ""
-            Item.show_items
+            Inventory.char_inventory
             question = ask("What item would you like to delete? (Choose an id)", Integer)
             Inventory.where(item_id: question).update(item_id: nil)
         else
