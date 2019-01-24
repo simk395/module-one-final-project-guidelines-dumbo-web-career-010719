@@ -11,7 +11,6 @@ class Menu
             puts "Character Menu"
             menu.prompt = "Pick an option"
             menu.choice("Change character name"){Character.update_character_name()}
-            menu.choice("Show all characters") {Character.show_characters()}
             menu.choice("Create Item") { Item.generate_new_item()}#
             menu.choice("Show character inventory") {Inventory.char_inventory()}#can do better
             menu.choice("Delete Character"){Character.delete_char()}

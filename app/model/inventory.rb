@@ -2,15 +2,16 @@ class Inventory < ActiveRecord::Base
     belongs_to :character
     belongs_to :item
 
+    
     def delete
         self.delete_all(self.id)
     end
 
     #return a character's inventory
     def self.char_inventory
-            # result.each {|item| puts item}
+           
         if Character.current_char!=""
-            # char_inv = Inventory.all.where(char_id: Character.current_char.id)
+           
             chara_id = Character.current_char.id
 
             char_inv=Inventory.all.select {|inv| inv.char_id == chara_id}

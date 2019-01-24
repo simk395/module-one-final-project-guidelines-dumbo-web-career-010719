@@ -2,6 +2,7 @@ class Item < ActiveRecord::Base
     has_many :inventories
     has_many :characters, through: :inventory
 
+    #craft a new item with 33% of chance
     def self.generate_new_item
         if Character.current_char != ""
             item_array=[Item.new(name: "Excalibur", category: "Weapon"),
@@ -29,10 +30,12 @@ class Item < ActiveRecord::Base
         end
     end
 
+    #retrun all items
     def self.show_items
-        puts tp Item.all
+        tp Item.all
     end
 
+    #delete a item from charact inventory
     def self.delete_item
         if Character.current_char != ""
             Inventory.char_inventory
