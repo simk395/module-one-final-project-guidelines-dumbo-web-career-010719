@@ -18,6 +18,9 @@ class Inventory < ActiveRecord::Base
            SQL
 
             result = ActiveRecord::Base.connection.execute(query)
+            result=result.each {|hash| hash.without("0", "1")}
+           
+            
             return tp result
             # puts tp char_inv
             # item_name = Item.all
