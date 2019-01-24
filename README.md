@@ -6,6 +6,7 @@ This project is using Ruby and ActiveRecord, along with Sqlite3 for database man
 Gems
 table_print
 highline
+audite
 
 Setup Instructions
 Install required gems:
@@ -13,11 +14,13 @@ Install required gems:
 bundle install
 gem install table_print
 gem install highline
-
+gem install audite
 
 To run:
 
 ruby bin/run.rb
+      or
+bundle exec ruby bin/run.rb
 
 # Module One Final Project Guidelines
 
