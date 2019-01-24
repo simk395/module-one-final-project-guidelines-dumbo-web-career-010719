@@ -3,6 +3,7 @@ require_relative '../app/model/character'
 require_relative '../app/model/inventory'
 require_relative '../app/model/item'
 
+#character's menu
 class Menu
     def self.menu2
         puts
@@ -20,6 +21,7 @@ class Menu
         end
     end
 
+    #main menu
     def self.menu1
         puts
         loop do
