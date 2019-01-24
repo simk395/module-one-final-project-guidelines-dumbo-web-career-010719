@@ -24,12 +24,6 @@ class Menu
     def self.music
         player = Audite.new
 
-        # player.events.on(:complete) do
-        # puts "COMPLETE"
-        # end
-
-        # 
-
         player.load('/Users/tong/dev/module-one-final-project-guidelines-dumbo-web-career-010719/bin/lom.mp3')
         player.start_stream
         player.forward(20)
@@ -45,12 +39,6 @@ class Menu
                 menu.prompt = "Pick an option"
                 menu.choice("Create Character"){Character.create_character() }
                 menu.choice("Select Character") {Character.load()}
-                # menu.choice("Change character name"){Character.update_character_name()}
-                # menu.choice("Show all characters") {Character.show_characters()}
-                # menu.choice("Create Item") { Item.generate_new_item()}#
-                # menu.choice("Show character inventory") {Inventory.char_inventory()}#can do better
-                # menu.choice("Delete Character"){Character.delete_char()}
-                # menu.choice("Delete Item"){Item.delete_item()}
                 menu.choice(:Quit, "Exit program.") { exit }
             end
         end

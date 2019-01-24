@@ -15,8 +15,7 @@ class Inventory < ActiveRecord::Base
             chara_id = Character.current_char.id
 
             char_inv=Inventory.all.select {|inv| inv.char_id == chara_id}
-            # tp char_inv
-            
+
             array=[]
              char_inv.map do |inv|
                 Item.all.select do |item|
@@ -28,19 +27,6 @@ class Inventory < ActiveRecord::Base
                 end
             end
             return tp array
-
-        #     query = <<-SQL 
-        #     select inventories.id "inv_id", items.name "item_name"
-        #     from inventories inner join items
-        #     on inventories.item_id = items.id and inventories.char_id = char_id
-        #    SQL
-
-        #     result = ActiveRecord::Base.connection.execute(query)
-        #      puts result
-            # result=result.each {|hash| hash.without(0)}
-           
-            
-            # return tp result
         end
             puts "No character has been selected."
      end
