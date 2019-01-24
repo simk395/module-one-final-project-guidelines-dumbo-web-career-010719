@@ -12,13 +12,13 @@ class Inventory < ActiveRecord::Base
             # char_inv = Inventory.all.where(char_id: Character.current_char.id)
             char_id = Character.current_char.id
             query = <<-SQL 
-            Select inventories.id "id", items.name "item_name"
+            select inventories.id, items.name
             from inventories inner join items
-            where inventories.item_id == items.id and inventories.char_id == char_id
+            on inventories.item_id = items.id and inventories.char_id = char_id
            SQL
 
             result = ActiveRecord::Base.connection.execute(query)
-           return tp result
+            return tp result
             # puts tp char_inv
             # item_name = Item.all
             # result=[]
