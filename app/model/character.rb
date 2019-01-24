@@ -21,7 +21,7 @@ class Character < ActiveRecord::Base
         tp Character.all
     end
 
-    
+    #update a character's name
     def self.update_character_name
     if Character.current_char != ""
         new_name = ask("Choose a name to change to: ", String)
@@ -34,6 +34,7 @@ class Character < ActiveRecord::Base
     end
     end
     
+    #load a existing character
     def self.load
     if Character.all.count != 0
         Character.show_characters
@@ -46,17 +47,19 @@ class Character < ActiveRecord::Base
     end
     end
 
+    #return a current character object
     def self.current_char
     @@current_char
     end
 
+    #delete a character along with the inventory associate with 
     def self.delete_char
-    if Character.current_char != ""
-        Inventory.where(char_id: Character.current_char.id).destroy_all
-        Character.destroy(Character.current_char.id)
-    else
-        puts "No character has been selected."
-    end
+        if Character.current_char != ""
+            Inventory.where(char_id: Character.current_char.id).destroy_all
+            Character.destroy(Character.current_char.id)
+        else
+            puts "No character has been selected."
+        end
     end
 
     #  def self.menu2
