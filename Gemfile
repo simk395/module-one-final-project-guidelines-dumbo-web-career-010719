@@ -9,3 +9,4 @@ gem "activerecord"
 gem "rake"
 gem "table_print"
 gem "highline"
+gem 'audite'

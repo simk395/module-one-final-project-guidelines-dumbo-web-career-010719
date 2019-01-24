@@ -3,10 +3,20 @@ require_relative '../app/model/character'
 require_relative '../app/model/inventory'
 require_relative '../app/model/item'
 require_relative './menu'
+require 'audite'
 
 begin
-    Menu.menu1
+    t1 = Thread.new do
+        Menu.menu1
+    end
+    Menu.music
+    t1.join
 end
+# t1 = Thread.new do
+#     first_method
+#   end
+#   second_method
+#   t1.join
 
 # def menu2
 #   puts

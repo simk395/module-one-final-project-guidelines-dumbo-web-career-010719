@@ -13,6 +13,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.4)
+    audite (0.4.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.5)
     highline (2.0.0)
@@ -48,6 +49,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord
+  audite
   highline
   pry
   rake
