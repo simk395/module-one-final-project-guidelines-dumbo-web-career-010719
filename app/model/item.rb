@@ -29,13 +29,18 @@ class Item < ActiveRecord::Base
         end
     end
 
+    def self.show_items
+        puts tp Item.all
+    end
+
     def self.delete_item
         if Character.current_char != ""
-            Inventory.show_inventories
-            question = ask("What item would you like to delete? (Choose an id), Integer)
-            Inventory.where(id: question).update(item_id: nil)
+            Item.show_items
+            question = ask("What item would you like to delete? (Choose an id)", Integer)
+            Inventory.where(item_id: question).update(item_id: nil)
         else
             puts "No character has been selected."
         end
     end
+
 end
