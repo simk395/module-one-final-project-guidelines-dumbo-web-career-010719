@@ -12,7 +12,13 @@ class Menu
         puts
         loop do
             choose do |menu|
-                puts "Main Menu"
+                puts "
+                 _______         __             _______                    
+                |   |   |.---.-.|__|.-----.    |   |   |.-----.-----.--.--.
+                |       ||  _  ||  ||     |    |       ||  -__|     |  |  |
+                |__|_|__||___._||__||__|__|    |__|_|__||_____|__|__|_____|
+                                                                           "
+
                 menu.prompt = "Pick an option"
                 menu.choice("Create Character"){Character.create_character() }
                 menu.choice("Select Character") {Character.load()}
@@ -29,7 +35,12 @@ class Menu
         puts
         loop do
           choose do |menu|
-            puts "Character Menu"
+            puts "
+             ___ __                              __                   _______                    
+            |      |  |--.---.-.----.---.-.----.|  |_.-----.----.    |   |   |.-----.-----.--.--.
+            |   ---|     |  _  |   _|  _  |  __||   _|  -__|   _|    |       ||  -__|     |  |  |
+            |______|__|__|___._|__| |___._|____||____|_____|__|      |__|_|__||_____|__|__|_____|
+                                                                                                 "
             menu.prompt = "Pick an option"
             menu.choice("Change character name"){Character.update_character_name()}
             menu.choice("Create Item") { Item.generate_new_item()}#

@@ -11,7 +11,7 @@ class Item < ActiveRecord::Base
                     Item.new(name: "Glamdring", category: "Weapon" ), 
                     Item.new(name: "Bronze Shield", category: "Shield"),
                     Item.new(name: "Plate Armor", category: "Armor"),
-                    Item.new(name: "Bronz Armor", category: "Armor"),
+                    Item.new(name: "Bronze Armor", category: "Armor"),
                     Item.new(name: "Large Potion", category: "Potion"),
                     Item.new(name: "Small Potion", category: "Potion")]
             rand_num =rand(1..10)
