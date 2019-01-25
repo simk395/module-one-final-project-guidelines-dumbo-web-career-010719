@@ -32,19 +32,24 @@ class Item < ActiveRecord::Base
 
     #delete a item from charact inventory
     def self.delete_item
-        if Character.current_char != ""
+        if Character.current_char != "" 
             inv = Inventory.char_inventory
-            ids = inv.map do |id|
-                id.values
-            end.flatten
+                ids = inv.map do |id|
+                    id.values
+                end.flatten
+    
             question = ask("What item would you like to delete? (Choose an id)", Integer)
+           
             if ids.include?(question)
+                
                 Inventory.where(item_id: question).update(item_id: nil)
             else
+                
                 puts "Invalid Input"
                 Item.delete_item()
             end
         else
+            
             puts "No character has been selected."
         end
     end

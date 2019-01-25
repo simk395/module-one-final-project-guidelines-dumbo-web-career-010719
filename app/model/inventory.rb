@@ -26,6 +26,10 @@ class Inventory < ActiveRecord::Base
                     end
                 end
             end
+            if array.count == 0
+                puts "Please add an item first"
+                Menu.game_menu
+            end
             tp array
             return array
         end
