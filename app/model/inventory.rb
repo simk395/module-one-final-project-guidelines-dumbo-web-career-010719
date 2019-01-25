@@ -26,7 +26,8 @@ class Inventory < ActiveRecord::Base
                     end
                 end
             end
-            return tp array
+            tp array
+            return array
         end
             puts "No character has been selected."
      end
@@ -44,7 +45,10 @@ class Inventory < ActiveRecord::Base
             inv = Inventory.where(char_id: character.id)
             tp inv 
             question3 = ask("Which slot would you like to put it in?", Integer)
+<<<<<<< HEAD
             # Person.where(name: 'Spartacus', rating: 4).exists?(conditions = :none)
+=======
+>>>>>>> c0b39fd3371224cce9b4dfcb189da96907bfa6be
             if inv.where(id: question3).exists?(conditions = :none)
                 inv.where(id: question3).update(item_id: item.id)
             else
@@ -54,7 +58,7 @@ class Inventory < ActiveRecord::Base
         elsif question == 0
             #nothin happens
         else
-            puts "Invalid input"
+            puts "Invalid Input"
             Inventory.add_item_to_inventory(item)
         end
     end
